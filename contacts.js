@@ -37,7 +37,12 @@ const showContact = () => {
     }
 }
 
-
+const removeContact = (fullname) => {
+    const contacts = loadContacts();
+    const filteredContacts = contacts.filter(c => c.fullname !== fullname);
+    console.log(`${fullname} has been deleted.`);
+    savedContacts(filteredContacts);
+}
 
 const loadContacts = () => {
     try {
@@ -53,5 +58,5 @@ const loadContacts = () => {
 module.exports = {
     addContacts,
     showContact,
-   
+    removeContact
 }

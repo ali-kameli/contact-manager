@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const { addContacts, showContact} = require('./contacts');
+const { addContacts, showContact, removeContact } = require('./contacts');
 
 yargs.scriptName("contact-manager");
 
@@ -41,4 +41,20 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command: "remove",
+    describe: "remove person",
+    aliases: "[r]",
+    builder: {
+        fullname: {
+            demandOption: true,
+            describe: "enter person's fullname for remove...",
+            type: "string",
+            alias: 'f'
+        }
+    },
+    handler({ fullname }) {
+        removeContact(fullname);
+    }
+})
 yargs.parse(); 
