@@ -1,9 +1,12 @@
 const yargs = require('yargs');
-const { addContacts } = require('./contacts');
+const { addContacts, showContact} = require('./contacts');
+
+yargs.scriptName("contact-manager");
 
 yargs.command({
     command: "create",
     describe: "create person",
+    aliases: '[c]',
     builder: {
         fullname: {
             describe: "person fullname",
@@ -19,7 +22,7 @@ yargs.command({
         },
         email: {
             describe: "person email addres",
-            alias: 'p',
+            alias: 'e',
             demandOption: true,
             type: 'string'
         }
@@ -29,5 +32,13 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command: "show",
+    aliases: "[s]",
+    describe: "show persons list",
+    handler() {
+        showContact()
+    }
+})
 
 yargs.parse(); 
