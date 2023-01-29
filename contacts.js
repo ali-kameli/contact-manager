@@ -33,7 +33,7 @@ const showContact = () => {
         //     );
         // });
     } else {
-        console.log('person not found');
+        console.log('contact not found');
     }
 }
 
@@ -42,6 +42,13 @@ const removeContact = (fullname) => {
     const filteredContacts = contacts.filter(c => c.fullname !== fullname);
     console.log(`${fullname} has been deleted.`);
     savedContacts(filteredContacts);
+}
+
+const findContact = fullname => {
+    const contacts = loadContacts();
+    const filteredContact = contacts.filter(c => c.fullname === fullname);
+    if (filteredContact) console.log(`youre contact found : ${JSON.stringify(filteredContact)}`);
+    else console.log(`contact not found !!`);
 }
 
 const loadContacts = () => {
@@ -58,5 +65,6 @@ const loadContacts = () => {
 module.exports = {
     addContacts,
     showContact,
-    removeContact
+    removeContact,
+    findContact
 }

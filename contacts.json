@@ -1,1 +1,12 @@
-[{"fullname":"ali","phone":12345,"email":"a@gmail.com"},{"fullname":"ailin","phone":902,"email":"ailin@gmail.com"},{"fullname":"mohamad","phone":11,"email":"mohammad@gmail.com"}]
+[
+    {
+        "fullname": "ali",
+        "phone": 12345,
+        "email": "a@gmail.com"
+    },
+    {
+        "fullname": "mohamad",
+        "phone": 11,
+        "email": "mohammad@gmail.com"
+    }
+]

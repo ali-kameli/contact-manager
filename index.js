@@ -1,27 +1,27 @@
 const yargs = require('yargs');
-const { addContacts, showContact, removeContact } = require('./contacts');
+const { addContacts, showContact, removeContact, findContact } = require('./contacts');
 
 yargs.scriptName("contact-manager");
 
 yargs.command({
     command: "create",
-    describe: "create person",
+    describe: "create contact",
     aliases: '[c]',
     builder: {
         fullname: {
-            describe: "person fullname",
+            describe: "contact fullname",
             demandOption: true,
             type: 'string',
             alias: "f"
         },
         phone: {
-            describe: "person phone number",
+            describe: "contact phone number",
             alias: 'p',
             demandOption: true,
             type: 'number'
         },
         email: {
-            describe: "person email addres",
+            describe: "contact email addres",
             alias: 'e',
             demandOption: true,
             type: 'string'
@@ -35,7 +35,7 @@ yargs.command({
 yargs.command({
     command: "show",
     aliases: "[s]",
-    describe: "show persons list",
+    describe: "show contact's list",
     handler() {
         showContact()
     }
@@ -43,18 +43,35 @@ yargs.command({
 
 yargs.command({
     command: "remove",
-    describe: "remove person",
+    describe: "remove contact",
     aliases: "[r]",
     builder: {
         fullname: {
             demandOption: true,
-            describe: "enter person's fullname for remove...",
+            describe: "enter contact fullname for remove...",
             type: "string",
             alias: 'f'
         }
     },
     handler({ fullname }) {
         removeContact(fullname);
+    }
+})
+
+yargs.command({
+    command: 'find',
+    describe: "find contact detail",
+    aliases: "[f]",
+    builder: {
+        fullname: {
+            describe: "give fullname contact to get contact detail",
+            demandOption: true,
+            alias: "f",
+            type: "string"
+        }
+    },
+    handler({ fullname }) {
+        findContact(fullname);
     }
 })
 yargs.parse(); 
